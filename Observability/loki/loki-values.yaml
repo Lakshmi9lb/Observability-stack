@@ -1,0 +1,21 @@
+canary:
+  enabled: false
+
+resultsCache:
+  enabled: false
+
+read:
+  enabled: false
+
+write:
+  enabled: false
+
+backend:
+  enabled: false
+
+gateway:
+  enabled: false
+
+chunksCache:
+  enabled: false
+
