@@ -1,0 +1,14 @@
+tempo:
+  searchEnabled: true
+  metricsGenerator:
+    enabled: true
+
+ingester:
+  replicas: 1
+
+distributor:
+  replicas: 1
+
+queryFrontend:
+  replicas: 1
+
