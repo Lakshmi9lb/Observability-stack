@@ -1,0 +1,26 @@
+# prometheus-values.yaml
+
+alertmanager:
+  enabled: false
+
+pushgateway:
+  enabled: false
+
+server:
+  resources:
+    limits:
+      cpu: 100m
+      memory: 200Mi
+    requests:
+      cpu: 50m
+      memory: 100Mi
+  persistentVolume:
+    enabled: false
+  retention: "12h"
+
+nodeExporter:
+  enabled: false
+
+kubeStateMetrics:
+  enabled: false
+
