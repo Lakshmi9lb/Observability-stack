@@ -1,0 +1,35 @@
+alertmanager:
+  enabled: false
+
+ruler:
+  enabled: false
+
+minio:
+  enabled: false
+
+metaMonitoring:
+  dashboards:
+    enabled: false
+  serviceMonitor:
+    enabled: false
+
+ingester:
+  replicas: 1
+  persistence:
+    enabled: false
+
+distributor:
+  replicas: 1
+
+query_frontend:
+  replicas: 1
+
+store_gateway:
+  replicas: 1
+  persistence:
+    enabled: false
+
+compactor:
+  persistence:
+    enabled: false
+
