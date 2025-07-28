@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-demoapp
+  namespace: observability
+  labels:
+    app: sample-demoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-demoapp
+  template:
+    metadata:
+      labels:
+        app: sample-demoapp
+    spec:
+      containers:
+        - name: sample-demoapp
+          image: jaegertracing/example-hotrod:1.42
+          args: ["all"]
+          ports:
+            - containerPort: 8080
+          env:
+            - name: JAEGER_AGENT_HOST
+              value: "tempo.observability.svc.cluster.local"
+            - name: JAEGER_AGENT_PORT
+              value: "6831"
+          # Log startup and access
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "echo Sample demoapp started and ready to serve requests"]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-demoapp
+  namespace: observability
+spec:
+  type: LoadBalancer
+  selector:
+    app: sample-demoapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+
